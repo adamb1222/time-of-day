@@ -92,6 +92,8 @@
 	let myColor = '';
 	let myPic = "images/"
 	
+	myHours = 5;
+
 	if(myHours >= 5 && myHours <12){
 		myGreeting = "Good Morning";
 		myColor = "yellow";
@@ -108,6 +110,6 @@
 	
 	document.getElementById('mydiv').innerHTML = myGreeting;
 	document.body.style.backgroundColor = myColor;
-	document.getElementById("mypic").src = "myPic"; 
+	document.getElementById("mypic").src = myPic; 
 </script>
 </html>
