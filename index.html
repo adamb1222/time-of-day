@@ -74,8 +74,8 @@
 	 <p>This HTML5 Flexible template could be a good starting point for some of your projects.  The template file starts by setting a background color on the HTML element, and setting max-width on the body, which is styled like a wrapper.  The BODY element is also set to a percentage width so it leaves a bit of HTML color until it shrinks in size toward the mobile view.</p>
 	 <p>There is an image with a class of FLEXIBLE which is set to a max-width equal to the size of the image.  Simutaneously the class sets the image to a percentage width, allowing the image to flex in size.  The height is not changed, as this would skew the image.</p>
 	 <p>The LIST elements inside the NAV are displayed inline by setting the display to be inline-block.  Bullets are removed by setting the UL to display</p>
-	 <p>The FOOTER includes a clear:both to keep everything above it! test</p>
-	  <img src="images/evening.jpg" alt="time of day pic" id= "mypic" class="flexible" />
+	 <p>The FOOTER includes a clear:both to keep everything above it!</p>
+	  <img src="images/evening.jpg" alt="time of day pic" id="mypic" class="flexible" />
      </main>
     <footer>
       <small>&copy; 2013, All Rights Reserved ~
@@ -89,24 +89,60 @@
 	let myDate = new Date(); 
 	let myHours = myDate.getHours();
 	let myGreeting = '';
+	let mySpecificDayGreeting = '';
 	let myColor = '';
 	let myPic = "images/"
+	let mySpecificDay = myDate.getDay();
+
+	mySpecificDay = 4;
 	
-	myHours = 15;
+
+	if(mySpecificDay >= 0 && mySpecificDay <1){
+		mySpecificDayGreeting = "Sunday";
+
+	} else if(mySpecificDay >= 1 && mySpecificDay <2) {
+		mySpecificDayGreeting = "Monday";
+
+	} else if(mySpecificDay >= 2 && mySpecificDay <3) {
+		mySpecificDayGreeting = "Tuesday";
+
+	} else if(mySpecificDay >= 3 && mySpecificDay <4) {
+		mySpecificDayGreeting = "Wednesday";
+
+	} else if(mySpecificDay >= 4 && mySpecificDay <5) {
+		mySpecificDayGreeting = "Thursday";
+
+	} else if(mySpecificDay >= 5 && mySpecificDay <6) {
+		mySpecificDayGreeting = "Friday";
+
+	} else {(mySpecificDay >= 6 && mySpecificDay <7)
+		mySpecificDayGreeting = "Saturday";
+
+	}
+	
 
 	if(myHours >= 5 && myHours <12){
-		myGreeting = "Good Morning";
+		myGreeting = "Good Morning! I'm here to let you know that today is " + mySpecificDayGreeting + "!";
 		myColor = "yellow";
 		myPic += "morning.jpg";
 
 	} else if(myHours >= 12 && myHours <18) {
-		myGreeting = "Good Afternoon!";
+		myGreeting = "Good Afternoon! I'm here to let you know that today is " + mySpecificDayGreeting + "!";
 		myColor = "orange";
+		myPic += "afternoon.jpg";
+
+	} else if(myHours >= 18 && myHours <21) {
+		myGreeting = "Good Evening! I'm here to let you know that today is " + mySpecificDayGreeting + "!";
+		myColor = "purple";
 		myPic += "evening.jpg";
 
-	}else{
-		alert('NOT morning');
+	} else {(myHours >= 21 && myHours <5) 
+		myGreeting = "Good Night! I'm here to let you know that today is " + mySpecificDayGreeting + "!";
+		myColor = "navy";
+		myPic += "night.jpg";
+
 	}
+	
 	
 	document.getElementById('mydiv').innerHTML = myGreeting;
 	document.body.style.backgroundColor = myColor;
